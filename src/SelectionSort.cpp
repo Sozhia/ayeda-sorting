@@ -15,15 +15,15 @@ void SelectionSort<Key>::swap(Key *first, Key *second){
 template<class Key>
 void SelectionSort<Key>::sort(std::vector<Key>& vector, int size){
   print(vector);
-  int minimun;
+  int minimun_index;
   for(int i = 0; i < size-1; i++) {
     std::cout << "Index position: " << i << std::endl;
-    minimun = vector[i];
+    minimun_index = i;
     for(int j = i+1; j < size; j ++) {
-      if (vector[j] < vector[i]) 
-        minimun = vector[j]; 
-        swap(&vector[j], &vector[i]);
+      if (vector[j] < vector[minimun_index]) 
+        minimun_index = j;
     }
+    swap(&vector[minimun_index], &vector[i]);
     print(vector);
     getchar();
   }
