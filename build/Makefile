@@ -1,8 +1,13 @@
 CC=g++
 CFLAGS=-I.
-DEPS = ../lib/
+DEPS = ../include/SortingAlgorithm.hpp \
+			 ../src/SelectionSort.hpp \
+			 ../src/SelectionSort.cpp \
+			 ../main.cpp \
 
-OBJ =  ../lib/
+OBJ =  ../src/SelectionSort.o \
+			 ../main.o \
+
 
 ./%.o: %.cpp $(DEPS)
 		$(CC) -c -o $@ $< $(CFLAGS)
@@ -12,5 +17,6 @@ ayeda-sorting: $(OBJ)
 
 clean:
 		rm -rf *o ./ayeda-sorting
-		rm -rf *o ../lib/*.o
+		rm -rf *o ../include/*.o
+		rm -rf *o ../src/*.o
 		rm -rf *o ../*.o
