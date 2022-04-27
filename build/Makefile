@@ -2,6 +2,7 @@ CC=g++
 CFLAGS=-I.
 DEPS = ../include/SortingAlgorithm.hpp \
 			 ../src/SelectionSort.hpp \
+			 ../src/QuickSort.hpp \
 			 ../ayeda-sorting.cpp \
 
 OBJ =  ../ayeda-sorting.o \

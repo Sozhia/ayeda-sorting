@@ -1,5 +1,7 @@
 #include "./include/SortingAlgorithm.hpp"
 #include "./src/SelectionSort.hpp"
+#include "./src/QuickSort.hpp"
+#include "./src/SortTest.hpp"
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
@@ -97,6 +99,11 @@ SortingAlgorithm<int>* createAlgorithm(char letter) {
     case 'S':
       algorithm = new SelectionSort<int>();
       break;
+
+    case 'Q':
+      algorithm = new QuickSort<int>();
+      break;
+
     default:
       algorithm = new SelectionSort<int>();
       break;
@@ -105,12 +112,20 @@ SortingAlgorithm<int>* createAlgorithm(char letter) {
 }
 
 void startProgram(){
-  int option = 0;
-  SortingAlgorithm<int>* algorithm = createAlgorithm(askAlgorithm());
-  std::vector<int> vector;
-  vector.resize(askSizeofSequence());
-  std::cout << "\t Enter 0 for manually insertion or 1 for random generation."<< std::endl;
-  std::cin >> option;
-  fillVector(vector,option);
-  algorithm->sort(vector, vector.size());
+  int menu = 0, random = 0;
+  do {
+    std::cout << "Enter (0) to sort a vector or (2) to stop and exit program." << std::endl;
+    std::cin >> menu;
+    if (menu != 2){  
+      SortingAlgorithm<int>* algorithm = createAlgorithm(askAlgorithm());
+      std::vector<int> vector;
+      vector.resize(askSizeofSequence());
+      unsigned int size = vector.size();
+      std::cout << "\t Enter 0 for manually insertion or 1 for random generation."<< std::endl;
+      std::cin >> random;
+      fillVector(vector,random);
+      SortTest<int> testing = SortTest(vector, size, algorithm);
+      testing.go();
+    }
+  }while (menu != 2);
 }

@@ -1,14 +1,15 @@
-#ifndef C5C58926_B8AD_4B60_9B72_7A560B4AE7A8
-#define C5C58926_B8AD_4B60_9B72_7A560B4AE7A8
+#ifndef _SHELLSORTHPP_
+#define _SHELLSORTHPP_
 
 #include "../include/SortingAlgorithm.hpp"
 #include <vector>
 #include <iostream>
 
 template<class Key>
-class SelectionSort : public SortingAlgorithm<Key> {
+class ShellSort : public SortingAlgorithm<Key> {
  public:
   void sort(std::vector<Key>& vector, int size) {
+    print(vector, 0, size - 1);
     int minimun_index;
     for(int i = 0; i < size-1; i++) {
       minimun_index = i;
@@ -36,4 +37,4 @@ class SelectionSort : public SortingAlgorithm<Key> {
 
 };
 
-#endif /* C5C58926_B8AD_4B60_9B72_7A560B4AE7A8 */
+#endif /* _SHELLSORTHPP_ */
