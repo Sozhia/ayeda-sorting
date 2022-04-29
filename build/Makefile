@@ -1,11 +1,16 @@
 CC=g++
 CFLAGS=-I.
 DEPS = ../include/SortingAlgorithm.hpp \
+			 ../src/SortTest.hpp \
+			 ../src/SortTest.cpp \
 			 ../src/SelectionSort.hpp \
 			 ../src/QuickSort.hpp \
-			 ../ayeda-sorting.cpp \
+			 ../src/HeapSort.hpp \
+			 ../src/ShellSort.hpp \
+			 ../ayeda-sorting.cpp
 
 OBJ =  ../ayeda-sorting.o \
+			 ../src/SortTest.o
 
 
 ./%.o: %.cpp $(DEPS)

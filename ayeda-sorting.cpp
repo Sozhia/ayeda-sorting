@@ -1,7 +1,9 @@
 #include "./include/SortingAlgorithm.hpp"
+#include "./src/SortTest.hpp"
 #include "./src/SelectionSort.hpp"
 #include "./src/QuickSort.hpp"
-#include "./src/SortTest.hpp"
+#include "./src/HeapSort.hpp"
+#include "./src/ShellSort.hpp"
 #include <iostream>
 #include <string.h>
 #include <stdio.h>
@@ -33,7 +35,7 @@ int main(int argc, char** argv) {
 char askAlgorithm() {
   char aux;
   std::cout << "\t Please enter the type of Algortihm."<< std::endl;
-  std::cout << "\t (S)electionSort ; (Q)uickSort ; (S)hellSort ; (H)eapSort : (R)adixSort " << std::endl;
+  std::cout << "\t (S)electionSort ; (Q)uickSort ; She(L)lSort ; (H)eapSort : (R)adixSort " << std::endl;
   std::cout << "\t Otherwise press Ctrl + C to exit."<< std::endl;
   std::cin >> aux;
   return aux;
@@ -104,6 +106,14 @@ SortingAlgorithm<int>* createAlgorithm(char letter) {
       algorithm = new QuickSort<int>();
       break;
 
+    case 'H':
+      algorithm = new HeapSort<int>();
+      break;
+
+    case 'L':
+      algorithm = new ShellSort<int>();
+      break;
+
     default:
       algorithm = new SelectionSort<int>();
       break;
@@ -124,8 +134,8 @@ void startProgram(){
       std::cout << "\t Enter 0 for manually insertion or 1 for random generation."<< std::endl;
       std::cin >> random;
       fillVector(vector,random);
-      SortTest<int> testing = SortTest(vector, size, algorithm);
-      testing.go();
+      SortTest<int>* testing = new SortTest<int>(vector, size, algorithm);
+      testing->go();
     }
   }while (menu != 2);
 }

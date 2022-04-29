@@ -2,10 +2,11 @@
 #define _SORTTESTCPP_
 
 #include "./SortTest.hpp"
+#include "../include/SortingAlgorithm.hpp"
 #include <vector>
 
 template<class Key>
-SortTest<Key>::SortTest(std::vector<Key>& vector, unsigned int size, SortingAlgorithm<Key>* strategy) {
+SortTest<Key>::SortTest(std::vector<Key>& vector, int size, SortingAlgorithm<Key>* strategy) {
   strategy_ = strategy;
   n_ = size;
   vector_ = vector;

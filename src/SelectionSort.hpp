@@ -9,16 +9,30 @@ template<class Key>
 class SelectionSort : public SortingAlgorithm<Key> {
  public:
   void sort(std::vector<Key>& vector, int size) {
+    std::cout << "Unsorted vector: ";
+    print(vector);
+    std:: cout << std::endl;
+    selectionSort(vector, size);
+    std::cout << "Sorted vector: ";
+    print(vector);
+    std::cout << std::endl;
+  }
+
+  void selectionSort(std::vector<Key>& vector, int size){
     int minimun_index;
     for(int i = 0; i < size-1; i++) {
+      if (size <= 10)
+        print(vector);
       minimun_index = i;
       for(int j = i+1; j < size; j ++) {
         if (vector[j] < vector[minimun_index]) 
           minimun_index = j;
       }
       swap(&vector[minimun_index], &vector[i]);
-      print(vector, 0, size - 1);
+      
     }
+    if (size <= 10)
+      print(vector);
   }
 
   void swap(Key *first, Key *second) {
@@ -28,7 +42,7 @@ class SelectionSort : public SortingAlgorithm<Key> {
   }
 
   void print(std::vector<Key>& vector){
-    for(int i = start; i < end; i++) {
+    for(int i = 0; i < vector.size(); i++) {
       std::cout << "["<<vector[i]<<"]";
     }
     getchar();

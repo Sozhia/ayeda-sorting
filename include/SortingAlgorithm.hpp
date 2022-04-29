@@ -1,5 +1,5 @@
-#ifndef B14853CD_4261_4D96_B4A6_A4D3F122F6B6
-#define B14853CD_4261_4D96_B4A6_A4D3F122F6B6
+#ifndef _SORTINGALGORITHMHPP_
+#define _SORTINGALGORITHMHPP_
 
 #include <vector>
 
@@ -10,4 +10,4 @@ template<class Key> class SortingAlgorithm{
   virtual void print(std::vector<Key>&) = 0;
 };
 
-#endif /* B14853CD_4261_4D96_B4A6_A4D3F122F6B6 */
+#endif /* _SORTINGALGORITHMHPP_ */

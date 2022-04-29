@@ -9,14 +9,18 @@ template<class Key>
 class QuickSort : public SortingAlgorithm<Key> {
  public:
   void sort(std::vector<Key>& vector, int size) {
-    print(vector, 0, size);
-    // base case
-    if (size <= 1)
-      print(vector, 0, size-1);
- 
-    quickSort(vector, 0, size-1);
+    std::cout << "Unsorted vector: ";
+    print(vector);
+    std::cout << std::endl;
 
-    print(vector, 0, size - 1);
+    if (size <= 1)
+      print(vector);
+    else 
+      quickSort(vector, 0, size-1);
+
+    std::cout << "Sorted vector: ";
+    print(vector);
+    std::cout << std::endl;
   }
 
   void swap(Key *first, Key *second) {
@@ -26,7 +30,8 @@ class QuickSort : public SortingAlgorithm<Key> {
   }
 
   void quickSort(std::vector<Key>& vector, int start, int end) {
-    print(vector);
+    if (vector.size() <= 10)
+      print(vector);
     int i = start , f = end ;
     int pivotIndex = (i+f)/2;
     while (i <= f){
@@ -43,7 +48,7 @@ class QuickSort : public SortingAlgorithm<Key> {
   }
 
   void print(std::vector<Key>& vector){
-    for(int i = start; i < end; i++) 
+    for(int i = 0; i < vector.size(); i++) 
       std::cout << "["<<vector[i]<<"]";
     
     getchar();

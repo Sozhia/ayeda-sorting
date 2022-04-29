@@ -9,17 +9,15 @@ template<class Key>
 class ShellSort : public SortingAlgorithm<Key> {
  public:
   void sort(std::vector<Key>& vector, int size) {
-    print(vector, 0, size - 1);
-    int minimun_index;
-    for(int i = 0; i < size-1; i++) {
-      minimun_index = i;
-      for(int j = i+1; j < size; j ++) {
-        if (vector[j] < vector[minimun_index]) 
-          minimun_index = j;
-      }
-      swap(&vector[minimun_index], &vector[i]);
-      print(vector, 0, size - 1);
-    }
+    std::cout << "Unsorted vector: ";
+    print(vector);
+    std::cout << std::endl;
+
+    shellSort(vector,size,askforAlpha());
+
+    std::cout << "Sorted vector: ";
+    print(vector);
+    std::cout << std::endl;
   }
 
   void swap(Key *first, Key *second) {
@@ -29,12 +27,41 @@ class ShellSort : public SortingAlgorithm<Key> {
   }
 
   void print(std::vector<Key>& vector){
-    for(int i = start; i < end; i++) {
+    for(int i = 0; i < vector.size(); i++) {
       std::cout << "["<<vector[i]<<"]";
     }
     getchar();
   }
 
+  void shellSort(std::vector<Key>& vector, int size, double alfa){
+    int delta = size;
+    while (delta > 1){
+      if (vector.size() <= 10)
+        print(vector);
+      delta = delta * alfa ;
+      deltaSort(delta, vector, size) ;
+    };
+
+  }
+
+  void deltaSort(int delta, std::vector<Key>& vector, int size){
+    for (int i = delta; i < size; i++){
+      Key x = vector[i] ;
+      int j = i ;
+      while ((j >= delta) && (x < vector[j - delta])){
+         vector[j] = vector[j - delta] ;
+         j = j - delta ;
+      };
+    vector[j] = x;
+    }
+  }
+
+  double askforAlpha(){
+    double alpha;
+    std::cout << "Enter a value alpha: 0 < alpha < 1" << std::endl;
+    std::cin >> alpha;
+    return alpha;
+  }
 };
 
 #endif /* _SHELLSORTHPP_ */
